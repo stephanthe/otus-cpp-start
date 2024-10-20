@@ -22,8 +22,11 @@ int main(int argc, char *argv[]) {
 
   for (int i = 1; i < argc; ++i) {
     arg = argv[i];
+    if (arg == "-table") {
+      return high_score_table(high_scores_filename, user_name, attempts, false);
+    }
     if (arg == "-max") {
-      if (level_opt_present ==true){
+      if (level_opt_present == true) {
         std::cout << "-max & -level can't be together\n";
         return 1;
       }
@@ -39,7 +42,7 @@ int main(int argc, char *argv[]) {
       }
     }
     if (arg == "-level") {
-      if (max_opt_present ==true){
+      if (max_opt_present == true) {
         std::cout << "-max & -level can't be together\n";
         return 1;
       }
@@ -73,7 +76,7 @@ int main(int argc, char *argv[]) {
     std::cout << "-max must be >=10";
     return 1;
   }
-  std::cout << "guess number 0.."<<max_value-1<<"\n";
+  std::cout << "guess number 0.." << max_value - 1 << "\n";
   const int random_value = std::rand() % max_value;
 
   std::cout << "Enter your name please: ";
