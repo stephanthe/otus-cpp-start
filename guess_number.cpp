@@ -8,14 +8,37 @@
 #include "high_score_table.h"
 
 
-int main() {
+int main(int argc, char *argv[]) {
 
+  std::string arg;
   std::string user_name;
   int max_value = 100;
   int user_number;
   int attempts = 0;
   const std::string high_scores_filename = "high_scores.txt";
   std::srand(std::time(nullptr));
+  
+  for (int i=1; i<argc; ++i){
+    arg = argv[i];
+    if (arg == "-max"){
+      try{
+        max_value = std::stoi(argv[++i]);
+      }
+      catch( const std::out_of_range& oofr){
+        std::cout << "value of -max is out of range\n";
+        return 1;
+      }
+      catch(const std::invalid_argument& iarg){
+        std::cout << "invalid arg in -max parameter\n";
+        return 1;
+      }
+    }
+  }
+  if (max_value < 10){
+    std::cout << "-max must be >=10";
+    return 1;
+  }
+  
   const int random_value = std::rand() % max_value;
 
   std::cout << "Enter your name please: ";
