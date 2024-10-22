@@ -10,7 +10,6 @@ int main(int argc, char** argv) {
 
   std::string user_name;
   int max_value;
-  int user_number;
   int attempts = 0;
   const std::string high_scores_filename = "high_scores.txt";
   std::srand(std::time(nullptr));
