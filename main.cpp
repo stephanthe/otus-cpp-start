@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   for (int i = 1; i < argc; ++i) {
     arg = argv[i];
     if (arg == "-table") {
-      return high_score_table(high_scores_filename, user_name, attempts, false);
+      return high_score_table(high_scores_filename, user_name, attempts);
     }
     if (arg == "-max") {
       if (level_opt_present == true) {
@@ -103,5 +103,5 @@ int main(int argc, char *argv[]) {
   std::cout << "\n\n\x1b[4m" << user_name << " - You win in " << attempts
             << " attempts!\x1b[0m\n\n";
 
-  return high_score_table(high_scores_filename, user_name, attempts, false);
+  return high_score_table(high_scores_filename, user_name, attempts);
 }

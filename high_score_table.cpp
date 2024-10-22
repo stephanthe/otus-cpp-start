@@ -7,7 +7,7 @@
 #include "high_score_table.h"
 
 int high_score_table(const std::string &high_scores_filename,
-                     std::string user_name, int attempts, bool only_show) {
+                     std::string user_name, int attempts) {
   struct Users {
     std::string name;
     int count;
@@ -15,6 +15,7 @@ int high_score_table(const std::string &high_scores_filename,
   };
   std::vector<Users> users;
 
+  if (attempts > 0){
   std::ofstream score_file_out(high_scores_filename, std::ios_base::app);
   if (!score_file_out.is_open()) {
     std::cerr << "Failed to open file " << high_scores_filename;
@@ -23,7 +24,7 @@ int high_score_table(const std::string &high_scores_filename,
   }
   score_file_out << user_name << "\001" << attempts << std::endl;
   score_file_out.close();
-
+  }
   std::ifstream score_file_in(high_scores_filename);
   if (!score_file_in.is_open()) {
     std::cerr << "Failed to open file " << high_scores_filename;
