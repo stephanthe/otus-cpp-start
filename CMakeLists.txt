@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 add_executable(game main.cpp
                     args.cpp
-                    high_score_table.cpp
+                    high_score.cpp
                     game.cpp
 )

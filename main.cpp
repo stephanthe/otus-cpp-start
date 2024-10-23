@@ -4,7 +4,7 @@
 
 #include "args.h"
 #include "game.h"
-#include "high_score_table.h"
+#include "high_score.h"
 
 int main(int argc, char** argv) {
 
@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
   max_value = args::get_max(argc, argv); //return max; 0 if -table option; -1 if error in options
   
   if (max_value == 0){
-  return high_score_table(high_scores_filename, user_name, attempts);
+  return high_score::table(high_scores_filename, user_name, attempts);
   }
   if (max_value == -1){
     return -1;
@@ -34,5 +34,5 @@ int main(int argc, char** argv) {
   std::cout << "\n\n\x1b[4m" << user_name << " - You win in " << attempts
             << " attempts!\x1b[0m\n\n";
 
-  return high_score_table(high_scores_filename, user_name, attempts);
+  return high_score::table(high_scores_filename, user_name, attempts);
 }
